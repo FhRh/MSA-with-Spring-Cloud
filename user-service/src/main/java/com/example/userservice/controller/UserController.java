@@ -1,5 +1,6 @@
 package com.example.userservice.controller;
 
+import com.example.userservice.service.UserService;
 import com.example.userservice.vo.Greeting;
 import com.example.userservice.vo.RequestUser;
 import com.example.userservice.vo.ResponseUser;
@@ -17,12 +18,15 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     Environment env;
 
+    UserService userService;
+
     @Autowired
     Greeting greeting;
 
     @Autowired
-    public UserController(Environment env){
+    public UserController(Environment env, UserService userService){
         this.env = env;
+        this.userService = userService;
     }
 
     @GetMapping("/health_check")
